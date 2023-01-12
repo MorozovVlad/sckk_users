@@ -1,0 +1,38 @@
+img{
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 1px;
+    border-color:bisque;
+}
+Image{
+
+}
+.ant-table .ant-table-thead tr th img :hover{
+    width: 150px;
+    border-radius: 0;
+}
+table{
+    margin-top: 20px;
+    margin-left: 30px;
+    font-size: 16px;
+}
+
+.ant-table tr :hover{
+    cursor: pointer;
+}
+
+.user-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+span {
+    font-weight: 600;
+  }
+
+  .user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }

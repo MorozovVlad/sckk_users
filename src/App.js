@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import UsersTable2 from "./components/UsersTable2";
+import {
+  Switch,
+  Route,
+  useLocation,
+  useHistory,
+  Redirect,
+} from "react-router-dom";
+import Login from "./components/Login/Login";
+import { createContext, useEffect, useState } from "react";
+import { message } from "antd";
+import { useAuth } from "./hooks/useAuth";
+
+export const AppContext = createContext();
 
 function App() {
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const { tryLogout, tryLogin, isStateAuth, user } = useAuth(messageApi);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {contextHolder}
+      <AppContext.Provider
+        value={{ auth: { tryLogout, tryLogin, user }, message: messageApi }}
+      >
+        <Switch>
+          {isStateAuth ? (
+            <Route path="/">
+              <UsersTable2 />
+            </Route>
+          ) : null}
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
+      </AppContext.Provider>
     </div>
   );
 }

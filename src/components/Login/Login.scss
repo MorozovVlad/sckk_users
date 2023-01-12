@@ -1,0 +1,29 @@
+body{
+  margin:0;
+}
+.login-component {
+  min-height: 100vh;
+  padding-bottom: 0px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  .login-form {
+    width: 300px;
+  }
+
+  bottom{
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
